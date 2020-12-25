@@ -1,0 +1,6 @@
+Data science 공부해야 할 것 목록
+1. SQL 
+2. Pyspark
+3. Scala
+4. Recommendation model
+5. A/B test
