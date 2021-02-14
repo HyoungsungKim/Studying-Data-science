@@ -77,3 +77,26 @@ $$
 
 ## 2.6 Statistical models, Supervised Learning and Function Approximation
 
+The class of nearest-neighbor methods can be views as direct estimates of this condition; expectation, but we have seen that they can fail in at least two ways:
+
+- If the dimension of the input space is high, the nearest neighbors need not be close to the target point, and can result in large errors;
+- If special structure is known to exists, this can be used to reduce both the bias and the variance of the estimates
+- Nearest-neighbor은 고차원에서 좋지 않음
+
+### 2.6.1 A Statistical Model for the Joint Distribution Pr(X, Y)
+
+Suppose in fact that our data arose from a statistical model (Additive error model)
+$$
+Y = f(X) + \epsilon
+$$
+
+- Where the random error $\epsilon$ has $E(\epsilon) = 0$ and is independent of X.
+- The assumption in equation that the errors are independent and identically distributed is not strictly necessary, but seems to be at the back of our mind when we average squared errors uniformly in our EPE(expected prediction error) criterion
+
+For most systems the input–output pairs (X, Y) will not have a deterministic relationship Y=f(X).
+
+- Generally there will be other unmeasured variables that also contribute to Y, including measurement error.
+- The additive model assumes that we can capture all these departures from a deterministic relationship via the error $\epsilon$.
+- In general the conditional distribution Pr(Y|X) can depend on X in complicated ways, but the additive error model precludes these.
+
+So far we have concentrated on the quantitative response. ***Additive error models are typically not used for qualitative outputs G***; in this case the target function p(X) is the conditional density Pr(G|X), and this is modeled directly. 
