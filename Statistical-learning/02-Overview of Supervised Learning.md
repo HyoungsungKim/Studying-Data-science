@@ -100,3 +100,57 @@ For most systems the input–output pairs (X, Y) will not have a deterministic r
 - In general the conditional distribution Pr(Y|X) can depend on X in complicated ways, but the additive error model precludes these.
 
 So far we have concentrated on the quantitative response. ***Additive error models are typically not used for qualitative outputs G***; in this case the target function p(X) is the conditional density Pr(G|X), and this is modeled directly. 
+
+### 2.6.2 Supervised Learning
+
+### 2.6.3 Function Approximation
+
+Although somewhat less glamorous than the learning paradigm, ***treating supervised learning as a problem in function approximation*** encourages the geometrical concepts of Euclidean spaces and mathematical concepts of probabilistic inference to be applied to the problem. This is the approach taken in this book.
+
+Many of the approximations we will encounter have associated a set of parameters $\theta$ that can be modified to suit the data at hand. For example,the linear model $f(x) =x^T\beta$ has $\theta=\beta$. Another class of useful approximators can be expressed as linear basis expansions
+$$
+f_\theta(x) = \sum^K_{k=1}h_k(x)\theta_k
+$$
+
+- Where $h_k$ are a suitable set of functions or transformations of the input vector x.
+
+We also encounter nonlinear expansions, such as the sigmoid transformation common to neural network models,
+$$
+h_k(x) = \frac{1}{1 + exp)-x^T\beta_k}
+$$
+We can use least squares to estimate the parameters $\theta$ in $f_\theta$ as we did for the linear model, by minimizing the residual sum-of-squares
+$$
+RSS(\theta) = \sum^N_{i=1}(y_i-f_\theta(x_i))^2
+$$
+as a function of $\theta$.
+
+- While least squares is generally very convenient, it is not the only criterion used and in some cases would not make much sense.
+- A more general principle for estimation is maximum likelihood estimation.
+
+$$
+L(\theta) = \sum^N_{i=1}log(Pr_\theta(y_i))
+$$
+
+- The principle of maximum likelihood assumes that the most reasonable values for $\theta$ are ***those for which the probability of the observed sample is largest***. 
+
+The log-likelihood (also referred to as the cross-entropy) is 
+$$
+L(\theta) = \sum^N_{i=1}logp_{g_i, \theta}(x_i)
+$$
+and when maximized it delivers values of $\theta$ that best conform with the data in this likelihood sense.
+
+## 2.7 Structured Regression Models
+
+We have seen that although nearest-neighbor and other local methods focus directly on estimating the function at a point, ***they face problems in high dimensions***.
+
+- They may also be inappropriate even in low dimensions in cases where more structured approaches can make more efficient use of the data.
+- This section introduces classes of such structured approaches.
+- Nearest neighbor and other local methods : 고차원에서 성능 안좋음, 저차원에서는 더 좋은 방법 존재 함
+
+### 2.7.1 Difficulty of the Problem
+
+Consider the RSS criterion for an arbitrary function f,
+$$
+RSS(f) = \sum^N_{i=1}(y_i-f(x_i))^2
+$$
+If the sample size N were sufficiently large such that repeats were guaranteed and densely arranged, it would seem that these solutions might all tend to the limiting conditional expectation
